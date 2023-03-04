@@ -1,0 +1,54 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1ETXdNekUyTVRBd05Wb1hEVE16TURJeU9ERTJNVEF3TlZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS3Z2CnNvUXZkdFZaN0o3THNzaytxRkRYalZYZCtxQzJyNW9zRU8zbkQyS2graHI5OGNuTVNSNlRMTTR6ZGg4Q0UyL2MKdkRFbnB0REt2UnFjY1RaYytCRFZSRmVZdGt1L1ZoTmo1dFo3T3JxT1p2enZLQUhGTVpyTTJUdzdaMEtrQVBnUgpsVGJleFZhbzMvSmI0WDM2N0lhMkc2bklXcUo4Q0NSZkhTbEM2QVVDbHdQTjlwUS9kZWhGU2p4dnpYK2pFY2FUCjBqTFNoWGJHcFkyeC91K09jT1BjNlRBbmk1QkZiN3Axb0lnL0ljV1cxeGNjMHpGNVkwbHR3SzRqemdFdG5XaE8KZWxpbTZ6VHZCaXNiSXMybkwwMDZvZGxVWERUYkNFa2lmV0liMWJnYnhSVkJrSWdNdk5XcTVpVWFXa2JqTE9ZTgo0eDRnT1VDdlhiV1lDWkZmZGcwQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZCZHpOOWhlVEU2MGI1OU5lWkxsMzQxQ09hQ3lNQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRytnVFUyR1Ixa25aRWZPQU5zcAorSllHdy9YNXJTL1dnUGt0RkVERXkvd0RSWDgvNy9ZNzVpdXd1czN4ODA2TXk5U0NHRnBuNXhLQlJzL1VqUU5WClBlVDV6eEl3dlZGWmdpaSs3Qk81SEJHVEgxNVNDR2lRVG1tbHRHM3IyUy9rb0NTODVGRThwb1JhRkh6YXhqNUQKMVhoSlJJM2ZtWTF5VE5YYU44RnZGb0xuWVk4S2FQMWx5L3NmRXVNUnlIRHhUaTd4N2dtZkRibjRaSndvcC9FNQp3WkV1T3FmdHY1elV6TjdaUzdRQVYvQ2g3TGJzenkrbEdzWmNvdEc5ZDgxNGo2aWR3elNqMXd0eU9MU09XaUFFCkRwRTJSY1dvLzdURElPcVFFSzVtZzRlcWdFQ3M5cThGdXI5eUgrWHlzdVNvQ01uOVpVbllDWVM0QWl1eVB0UUwKZkxRPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://9764EDEB7EA0A153F4AEB1A72761AD0A.gr7.us-west-2.eks.amazonaws.com
+  name: arn:aws:eks:us-west-2:127005304466:cluster/groupe1-cluster
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1ETXdNekU0TXpVeE4xb1hEVE16TURJeU9ERTRNelV4TjFvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTUNzCkJKMGNPQThHQ0JLQ0VyWm1RSGh0K0FNQUxYMFo3YXIxY2V2TmxIUndyV3RBZytseDNsU2h5UlhwNU91aGhYWUsKNkhoZmpBMnYwM0MxdGVEREJRZmJ5REs2eGpNRWlYQ3lvNWY0TzFDUjI1K3dxUytsMUFEMkM3T2lLdFZoSkhRKwpIYXNNYTliS1Bha3NsT29FcTlqNzFrNTR6eWV3Z3p4STZiK3FFSmdDVEloY1JDV0tiY3ZFdXIwZ0FWT2NFTm9ICjF5eEUwWVRRb3U0bEVHYW9iOUY1MXpRc1V2RzRQbkkxc3V3SWsxTFlFeDR0Q0J4STFJM1gycTJtT2R0RURRdTEKZEwrZFBlcXUrMDVPYmJ0ZFVYZjdmRmV1a2J6eGJJN2ZEQ2U2bmNkbWZxenhmdkNjd3E2Qi9EUG8xajBiSVdZdQpHOGFXbStxU29NQmxmNWxMT1JzQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZCZU5UZmMxakwyM2FiMlpIVUJrNExkZ3N4VnVNQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQ0dYWVdERzdocmt6UTNwemNtUwp2aXVMYjFLMkJQRXhiSFdzcWRIMm8ydXMzVGU1OTlaUlgydVk1SDJIelcxYnhpOS8rcWF0RWpabkg0Mk1EMW9SCmpFb01jVGpVa3NjSEF2cGNsbWFkV25UM21lSGJ2QXYrcS9MYW5CZjA1Q2tKcGNTNW1USjAzdElnUGY4LzlNdHYKSmc0ell6bVBwRnNKYjZhc2hMK1JvUkxkb2QzWjJYZFhzSTlJVmFRVFFOYUZxb3JmWFkrNWdwbUJvMmEvbzJ2Qgo0TThyRnMxQkhaTVd0TzMxWU1US2hXNVJSbzAxQ2dHWWdwSC93Z0plNFR1TFdJNExKZ2FuVmlFV1g3WDAwYzIvCmlsL2NQV1hGSXgyY2JSZlVUMzcvc1RaT3pPUkVhMmVOa0I5bWlBQjJWcm11MnRydEdoT0VNZUxPT0I2dVdsNFMKSnMwPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://2B8288DF5E91EFAC87505EFE4B835C12.gr7.us-west-2.eks.amazonaws.com
+  name: mycluster.us-west-2.eksctl.io
+contexts:
+- context:
+    cluster: arn:aws:eks:us-west-2:127005304466:cluster/groupe1-cluster
+    user: arn:aws:eks:us-west-2:127005304466:cluster/groupe1-cluster
+  name: arn:aws:eks:us-west-2:127005304466:cluster/groupe1-cluster
+- context:
+    cluster: mycluster.us-west-2.eksctl.io
+    user: i-039f573b758071f52@mycluster.us-west-2.eksctl.io
+  name: i-039f573b758071f52@mycluster.us-west-2.eksctl.io
+current-context: i-039f573b758071f52@mycluster.us-west-2.eksctl.io
+kind: Config
+preferences: {}
+users:
+- name: arn:aws:eks:us-west-2:127005304466:cluster/groupe1-cluster
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - --region
+      - us-west-2
+      - eks
+      - get-token
+      - --cluster-name
+      - groupe1-cluster
+      command: aws
+      env: null
+      interactiveMode: IfAvailable
+      provideClusterInfo: false
+- name: i-039f573b758071f52@mycluster.us-west-2.eksctl.io
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - eks
+      - get-token
+      - --cluster-name
+      - mycluster
+      - --region
+      - us-west-2
+      command: aws
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      provideClusterInfo: false

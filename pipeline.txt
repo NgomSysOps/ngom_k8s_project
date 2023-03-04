@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    
+    //specifier les outils a utiliser. Ca va telecharger les dependances necessaires
+    tools{
+        maven "Maven3"
+    }
+    
+    //Specifier notre registre docker(la ou on stocke nos images docker)
+    environment {
+        my_registry = "127005304466.dkr.ecr.us-west-2.amazonaws.com/my_container_reposirory"
+    }
+    stages {
+        stage('Checkout_pipeline') {
+            steps {
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NgomSysOps/ngom_k8s_project']])
+            }
+        }
+        
+        
+        stage("Builing the jar file") {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+        
+        stage("Creating Docker Dmage") {
+            steps {
+                script {
+                    docker.build my_registry
+                }
+            }
+        }
+        
+        stage("Pushing Docker image into ECR") {
+            steps {
+                sh "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 127005304466.dkr.ecr.us-west-2.amazonaws.com"
+                sh "docker push 127005304466.dkr.ecr.us-west-2.amazonaws.com/my_container_reposirory:latest"
+            }
+        }
+        
+        //Deployment the microservcies app to the aws cluster(containerize)
+        stage("Deploying the app to aws") {
+            steps {
+                
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8S', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                sh "kubectl apply -f  eks-deploy-k8s.yaml"
+                
+                }  
+            }
+        }
+        
+    }
+}

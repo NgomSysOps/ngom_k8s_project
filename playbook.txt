@@ -1,0 +1,51 @@
+---
+- name: Installation des packages pour le cluster EKS
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Ouverture du port 8080
+      ufw:
+        rule: allow
+        port: '8080'
+    - name: Installation de Java
+      apt:
+        name: default-jdk
+        state: latest
+    - name: Installation de Apache Maven
+      apt:
+        name: maven
+        state: latest
+
+    - name: Installation de Docker
+      apt:
+        name: docker.io
+        state: latest
+    - name: Ajout de la cle du repository Jenkins
+      shell: curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \ /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+    - name: Ajout du repo sur le serveur
+      shell: echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \ /etc/apt/sources.list.d/jenkins.list > /dev/null
+     - name: Updating cahe
+      apt:
+        update_cache: yes
+
+    - name: Installation de Jenkins
+      apt:
+        name: jenkins
+        state: latest
+    - name: Redemarrage de jenkins
+      service:
+        name: jenkins
+        state: restarted
+
+    - name: Ajout de l'url de telechargement de AWS CLI
+      shell: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+    - name: Desarchivage du package de AWS CLI
+      shell: sudo unzip awscliv2.zip
+
+    - name: Installation de kubectl
+      shell: sudo curl --silent --location -o /usr/local/bin/kubectl   https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+
+    - name: Chmod...
+      shell: sudo chmod +x /usr/local/bin/kubectl
