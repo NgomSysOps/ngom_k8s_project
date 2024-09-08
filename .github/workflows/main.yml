@@ -12,17 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        environment: [dev, prod]
+        environment: [dev, prod]  # Define your environments here
+
     environment:
-      name: ${{ matrix.environment }}
-      url: ${{ secrets.API_URL }}
-      
+      name: ${{ matrix.environment }}  # Use the matrix to name the environment
+      url: ${{ secrets.API_URL }}  # Use secrets for the API URL
+
     steps:
-      - name: Display
-        run: |
-          echo "ENVIRONEMENT: ${{ matrix.environment }}"
-          echo "VARIABLE: ${{env.MY_VAR }}"
-          echo "API_URL: ${{ matrix.API_URL }}"
+      - name: Checkout code
+        uses: actions/checkout@v3
       
-
-
+      - name: Display Environment and Variables
+        run: |
+          echo "ENVIRONMENT: ${{ matrix.environment }}"
+          echo "MY_VAR: ${{ env.MY_VAR }}"
+          echo "API_URL: ${{ secrets.API_URL }}"  # Correct way to access the secret
