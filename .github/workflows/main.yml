@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  MY_VAR: ${{ env.MY_VAR }}  # Access GitHub Variable
-  URL: ${{ env.URL }}        # Access GitHub Variable
 jobs:
   deploy:
     name: Deploy to Dev and Prod
@@ -27,6 +24,6 @@ jobs:
       - name: Display Environment and Variables
         run: |
           echo "ENVIRONMENT: ${{ matrix.environment }}"
-          echo "MY_VAR: $MY_VAR"
-          echo "URL: $URL"
+          echo "MY_VAR: ${{ env.MY_VAR }}"
+          echo "URL: ${{ env.URL }}"
 
