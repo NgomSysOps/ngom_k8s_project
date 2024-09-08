@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  MY_VAR: ${{ env.MY_VAR }}  # Access GitHub Variable
+  URL: ${{ env.URL }}        # Access GitHub Variable
 jobs:
   deploy:
     name: Deploy to Dev and Prod
@@ -16,7 +19,6 @@ jobs:
 
     environment:
       name: ${{ matrix.environment }}  # Use the matrix to name the environment
-      url: ${{ env.URL }}  # Use secrets for the API URL
 
     steps:
       - name: Checkout code
@@ -25,5 +27,6 @@ jobs:
       - name: Display Environment and Variables
         run: |
           echo "ENVIRONMENT: ${{ matrix.environment }}"
-          echo "MY_VAR: ${{ env.MY_VAR }}"
-          echo "API_URL: ${{ env.URL }}"  # Correct way to access the secret
+          echo "MY_VAR: $MY_VAR"
+          echo "URL: $URL"
+
