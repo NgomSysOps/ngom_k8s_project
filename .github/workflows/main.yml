@@ -1,0 +1,28 @@
+name: Deploy to Dev and Prod
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Dev and Prod
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, prod]
+    environment:
+      name: ${{ matrix.environment }}
+      url: ${{ secrets.API_URL }}
+      
+    steps:
+      - name: Display
+        run: |
+          echo "ENVIRONEMENT: ${{ matrix.environment }}"
+          echo "VARIABLE: ${{env.MY_VAR }}"
+          echo "API_URL: ${{ matrix.API_URL }}"
+      
+
+
