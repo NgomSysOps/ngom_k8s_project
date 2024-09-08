@@ -16,7 +16,7 @@ jobs:
 
     environment:
       name: ${{ matrix.environment }}  # Use the matrix to name the environment
-      #url: ${{ secrets.API_URL }}  # Use secrets for the API URL
+      url: ${{ env.URL }}  # Use secrets for the API URL
 
     steps:
       - name: Checkout code
@@ -26,4 +26,4 @@ jobs:
         run: |
           echo "ENVIRONMENT: ${{ matrix.environment }}"
           echo "MY_VAR: ${{ env.MY_VAR }}"
-          echo "API_URL: ${{ secrets.API_URL }}"  # Correct way to access the secret
+          echo "API_URL: ${{ env.URL }}"  # Correct way to access the secret
