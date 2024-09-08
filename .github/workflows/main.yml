@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Building project
-        run: echo "build succeeded"
+        run: echo "The build succeeded"
     
   deploy:
     name: Deploy to Dev and Prod
