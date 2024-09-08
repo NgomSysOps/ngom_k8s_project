@@ -7,8 +7,18 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    name: Build project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Building project
+        run: echo "build succeeded"
+    
   deploy:
     name: Deploy to Dev and Prod
+    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,10 +26,9 @@ jobs:
 
     environment:
       name: ${{ matrix.environment }}  # Use the matrix to name the environment
+      url: ${{ vars.URL }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
       
       - name: Display Environment and Variables
         run: |
