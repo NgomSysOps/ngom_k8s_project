@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Manual approval
-        if: ${{ matrix.environment }} == 'prod'
+        if: ${{ matrix.environment == 'prod' }}
         uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
