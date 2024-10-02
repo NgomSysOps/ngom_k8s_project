@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        environment: [dev, prod]  # Define your environments here
+        environment: [dev]  # Define your environments here
 
     environment:
       name: ${{ matrix.environment }}  # Use the matrix to name the environment
@@ -33,7 +33,7 @@ jobs:
         #if: matrix.environment == 'prod'
         uses: trstringer/manual-approval@v1
         with:
-          secret: ${{ secrets.GITHUB_TOKEN }}
+          secret: ${{ github.token }}
           approvers: NgomSysOps
           minimum-approvals: 1
           issue-title: "Deploying v1.3.5 to prod from Dev"
