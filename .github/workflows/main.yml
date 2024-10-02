@@ -29,6 +29,16 @@ jobs:
       url: ${{ vars.URL }}
 
     steps:
+      - name: Manual approval
+        #if: matrix.environment == 'prod'
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: NgomSysOps
+          minimum-approvals: 1
+          issue-title: "Deploying v1.3.5 to prod from Dev"
+          issue-body: "Please approve or deny the deployment to prod"
+          exclude-workflow-initiator-as-approver: false
       
       - name: Display Environment and Variables
         run: |
