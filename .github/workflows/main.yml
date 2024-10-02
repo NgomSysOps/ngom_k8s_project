@@ -1,7 +1,7 @@
 name: Deploy to Dev and Prod
 #permissions: write-all
 permissions:
-  issues: write  # Grant write access to issues
+  #issues: write  # Grant write access to issues
   contents: read # Read-only access to the repository content (optional)
 on:
   push:
