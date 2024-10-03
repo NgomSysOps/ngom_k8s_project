@@ -37,7 +37,7 @@ jobs:
           exclude-workflow-initiator-as-approver: false
           
       - name: Approval Timeout or Cancellation
-        if: always() && steps.approval.outcome == 'cancelled'
+        if: always() && steps.approval.conclusion == 'cancelled'
         run: echo "Manual approval step was cancelled or timed out. The deployment has been stopped."
 
       - name: Approval Timeout or success
