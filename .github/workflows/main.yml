@@ -39,15 +39,10 @@ jobs:
       - name: Approval Timeout or Cancellation
         if: always()
         run: |
-          if [ "${{ steps.approval.outcome }}" == "cancelled" ]; then
-            echo "Manual approval step was cancelled or timed out. The deployment has been stopped."
-          else
-            echo "Approval outcome: ${{ steps.approval.outcome }}"
+          APPROVAL_OUTCOME=${{ steps.approval.outcome }}
+          if [[ "$APPROVAL_OUTCOME" == "cancelled" || "$APPROVAL_OUTCOME" == "failure" ]]; then
+            echo "Manual approval step was cancelled or timed out. The deployment to prod has been stopped."
           fi
-
-      - name: Approval Timeout or success
-        if: always() && steps.approval.outcome == 'success'
-        run: echo "Manual approval is success"
         
       - name: Display Environment and Variables
         run: |
