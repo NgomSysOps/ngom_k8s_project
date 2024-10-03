@@ -35,10 +35,15 @@ jobs:
           issue-title: "Deploying app to prod"
           issue-body: "Please approve or deny the deployment to prod environment"
           exclude-workflow-initiator-as-approver: false
-          
+
       - name: Approval Timeout or Cancellation
-        if: always() && steps.approval.conclusion == 'cancelled'
-        run: echo "Manual approval step was cancelled or timed out. The deployment has been stopped."
+        if: always()
+        run: |
+          if [ "${{ steps.approval.outcome }}" == "cancelled" ]; then
+            echo "Manual approval step was cancelled or timed out. The deployment has been stopped."
+          else
+            echo "Approval outcome: ${{ steps.approval.outcome }}"
+          fi
 
       - name: Approval Timeout or success
         if: always() && steps.approval.outcome == 'success'
