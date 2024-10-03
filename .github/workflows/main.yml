@@ -39,6 +39,7 @@ jobs:
       - name: Approval Timeout or Cancellation
         if: always()
         run: |
+          echo "link: ${{ steps.approval.outputs.issue-url }}"
           APPROVAL_OUTCOME=${{ steps.approval.outcome }}
           if [[ "$APPROVAL_OUTCOME" == "cancelled" || "$APPROVAL_OUTCOME" == "failure" ]]; then
             echo "Manual approval step was cancelled or timed out. The deployment to prod has been stopped."
