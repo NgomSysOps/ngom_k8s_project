@@ -11,18 +11,8 @@ on:
   workflow_dispatch:
   
 jobs:
-  build:
-    name: Build project
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Building project
-        run: echo "The build succeeded"
-    
   deploy:
     name: Deploy to Dev and Prod
-    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -33,13 +23,9 @@ jobs:
       url: ${{ vars.URL }}
 
     steps:
-      - name: Status cancelled
-        if: steps.approval.outcome == 'cancelled'
-        run: echo "cancelled"
-        
       - name: Manual approval
         id: approval
-        if: ${{ matrix.environment == 'prod' }}
+        if: matrix.environment == 'prod'
         uses: trstringer/manual-approval@v1
         timeout-minutes: 1
         with:
@@ -49,14 +35,10 @@ jobs:
           issue-title: "Deploying app to prod"
           issue-body: "Please approve or deny the deployment to prod environment"
           exclude-workflow-initiator-as-approver: false
-
-      - name: Status sucess
-        if: steps.approval.outcome == 'success'
-        run: echo "Success"
-
-      - name: Status failure
-        if: steps.approval.outcome == 'failure'
-        run: echo "failure"
+          
+      - name: Approval Timeout or Cancellation
+        if: steps.approval.outcome == 'cancelled'
+        run: echo "Manual approval step was cancelled or timed out. The deployment has been stopped."
         
       - name: Display Environment and Variables
         run: |
