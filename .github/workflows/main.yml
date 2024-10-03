@@ -33,6 +33,10 @@ jobs:
       url: ${{ vars.URL }}
 
     steps:
+      - name: Status cancelled
+        if: steps.approval.outcome == 'cancelled'
+        run: echo "cancelled"
+        
       - name: Manual approval
         id: approval
         if: ${{ matrix.environment == 'prod' }}
@@ -53,12 +57,7 @@ jobs:
       - name: Status failure
         if: steps.approval.outcome == 'failure'
         run: echo "failure"
-
-      - name: Status cancelled
-        if: steps.approval.outcome == 'cancelled'
-        run: echo "cancelled"
-
-      
+        
       - name: Display Environment and Variables
         run: |
           echo "ENVIRONMENT: ${{ matrix.environment }}"
