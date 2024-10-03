@@ -34,6 +34,7 @@ jobs:
 
     steps:
       - name: Manual approval
+        id: approval
         if: ${{ matrix.environment == 'prod' }}
         uses: trstringer/manual-approval@v1
         timeout-minutes: 1
@@ -44,10 +45,23 @@ jobs:
           issue-title: "Deploying app to prod"
           issue-body: "Please approve or deny the deployment to prod environment"
           exclude-workflow-initiator-as-approver: false
+
+      - name: Status sucess
+        if: steps.approval.outcome == 'success'
+        run: echo "Success"
+
+      - name: Status failure
+        if: steps.approval.outcome == 'failure'
+        run: echo "failure"
+
+      - name: Status cancelled
+        if: steps.approval.outcome == 'cancelled'
+        run: echo "cancelled"
+
       
       - name: Display Environment and Variables
         run: |
           echo "ENVIRONMENT: ${{ matrix.environment }}"
           echo "MY_VAR: ${{ vars.MY_VAR }}"
           echo "URL: ${{ vars.URL }}"
-
+          
