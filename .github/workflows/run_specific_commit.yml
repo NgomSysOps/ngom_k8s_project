@@ -1,0 +1,20 @@
+name: Manual Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'The commit SHA to run this workflow with'
+        required: true
+        default: 'HEAD'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.commit_sha }}
+
+      # Add your steps here...
