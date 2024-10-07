@@ -6,7 +6,7 @@ on:
       commit_sha:
         description: 'The commit SHA to run this workflow with'
         required: false
-        default: 'HEAD'
+        default: HEAD
 
 jobs:
   deploy:
