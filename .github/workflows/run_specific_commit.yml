@@ -5,7 +5,7 @@ on:
     inputs:
       commit_sha:
         description: 'The commit SHA to run this workflow with'
-        required: true
+        required: false
         default: 'HEAD'
 
 jobs:
