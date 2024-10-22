@@ -19,4 +19,4 @@ jobs:
 
     - name: Final step
       run: echo "Workflow B finished successfully!"
-    
+    - run: exit 1 
