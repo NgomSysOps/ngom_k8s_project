@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-after-success:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}  # Only run if Workflow B succeeded
+    if: ${{ github.event.workflow_run.status == 'success' }}  # Only run if Workflow B succeeded
     runs-on: ubuntu-latest
 
     steps:
