@@ -1,0 +1,19 @@
+# .github/workflows/workflow-b.yml
+name: Workflow B
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run some job
+      run: echo "Running Workflow B"
+
+    - name: Final step
+      run: echo "Workflow B finished successfully!"
