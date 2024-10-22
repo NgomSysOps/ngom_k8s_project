@@ -17,4 +17,6 @@ jobs:
 
     - name: Final step
       run: echo "Workflow B finished successfully!"
-      run: echo "Workflow B finished successfully!"
+      
+    - name: Introduce intentional error
+      run: exit 1  # This will cause the job to fail with an exit code 1
