@@ -18,3 +18,10 @@ jobs:
 
     - name: Run some job
       run: echo "Running Workflow A because Workflow B succeeded!"
+
+  second_job:
+    needs:   run-after-success
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: echo "Second job if first success"
