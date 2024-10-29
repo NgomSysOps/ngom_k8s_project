@@ -8,14 +8,38 @@ on:
     branches: [main]
 
 jobs:
-  ci-build:
+  # Select what AML service to run
+  changes:
+    runs-on: ubuntu-latest
+    # Required permissions
+    permissions:
+      pull-requests: read
+    # Set job outputs to values from filter step
+    outputs:
+      api: ${{ steps.filter.outputs.api }}
+      auth: ${{ steps.filter.outputs.auth }}
+    steps:
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          api:
+            - 'api/**'
+          auth:
+            - 'auth/**'
+
+  auth-ci:
+    needs: changes
+    if: ${{ needs.changes.outputs.auth == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - name: Run job 1
-      run: echo "Running Build in CI Workflow"
+      run: echo "Running Auth in CI job"
       
-  ci-test:
+  api-ci:
+    needs: changes
+    if: ${{ needs.changes.outputs.api == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - name: Run job 2
-      run: echo "Running Deploy in CI Workflow"
+      run: echo "Running API in CI job"
