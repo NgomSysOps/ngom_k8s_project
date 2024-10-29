@@ -11,11 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Run some job
-      run: echo "Running Workflow B"
-
-    - name: Final step
-      run: echo "Workflow B finished successfully!"
+    - name: Run job 1
+      run: echo "Running Build in Workflow B"
+      
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run job 2
+      run: echo "Running Deploy in Workflow B"
