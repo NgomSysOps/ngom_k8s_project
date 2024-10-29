@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     # Required permissions
     permissions:
-      pull-requests: read
+      contents: read
     # Set job outputs to values from filter step
     outputs:
       api: ${{ steps.filter.outputs.api }}
