@@ -1,5 +1,5 @@
 # .github/workflows/workflow-b.yml
-name: Workflow B
+name: ci-Workflow
 
 on:
   push:
