@@ -3,7 +3,7 @@ name: Workflow A
 
 on:
   workflow_run:
-    workflows: ["Workflow B"]   # This matches the name of Workflow B
+    workflows: ["ci-workflow"]   # This matches the name of Workflow B
     types:
       - completed   # Listen for the completion of Workflow B
 
