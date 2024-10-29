@@ -8,14 +8,14 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  ci-build:
     runs-on: ubuntu-latest
     steps:
     - name: Run job 1
-      run: echo "Running Build in Workflow B"
+      run: echo "Running Build in CI Workflow"
       
-  deploy:
+  ci-test:
     runs-on: ubuntu-latest
     steps:
     - name: Run job 2
-      run: echo "Running Deploy in Workflow B"
+      run: echo "Running Deploy in CI Workflow"
