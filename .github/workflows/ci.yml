@@ -3,6 +3,7 @@ name: ci-Workflow
 
 on:
   push:
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -39,6 +40,8 @@ jobs:
     needs: changes
     if: ${{ needs.changes.outputs.api == 'true' }}
     runs-on: ubuntu-latest
+    outputs:
+      job_status: ${{ steps.check.outputs.status }}
     steps:
     - name: Run job 2
       run: echo "Running API in CI job"
